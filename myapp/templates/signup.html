@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>signup page</title>
+
+{% endblock %}
+{% block content %}
+    {% if form.errors %}
+
+        {% for field in form %}
+            {% if field.errors %}
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ field.errors }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="col-md-6 offset-md-3">
+        <h1>REGISTER</h1>
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">signup</button>
+
+        </form>
+
+    </div>
+{% endblock %}
